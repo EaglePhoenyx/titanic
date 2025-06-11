@@ -47,7 +47,7 @@ def clean_data(df):
     imputer = SimpleImputer().set_output(transform="pandas")
     imputer.fit(df[['Age']])
     df[['Age']] = imputer.transform(df[['Age']])
-    df["Embarked"].fillna("S", inplace=True)
+    df["Embarked"] = df["Embarked"].fillna("S")
 
     return df
 
