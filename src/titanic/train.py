@@ -18,13 +18,19 @@ def train_model(X_train,y_train):
 def evaluate_model(model,X_test,y_test):
     """
     Input : Model, X_test,y_test
-    Output: return the model score against X_test and y_test
+    Output: prints and returns the model score against X_test and y_test
     """
     metric = model.score(X_test, y_test)
     metric = f'{metric:.2f}'
     print(f"Model has a score of {metric}")
+    return metric
 
 def optimize_model(model,X_train,y_train):
+    """
+    Input : Model to optimize, X_train,y_train
+
+    Output : returns the best model found by GridSearch
+    """
     param_grid = {
     'C': [0.01, 0.1, 1, 10, 100],
     'penalty': ['l1', 'l2'],
