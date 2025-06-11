@@ -3,7 +3,7 @@
 """
 
 from src.titanic.data import load_data,clean_data,prepare_data
-from src.titanic.registry import save_model
+from src.titanic.registry import save_model, load_model
 from src.titanic.train import train_model, evaluate_model, optimize_model
 from src.titanic.utils import hello_world
 
@@ -23,3 +23,23 @@ print(train_df_cleaned.shape, test_df_cleaned.shape)
 
 print(X_train.shape, y_train.shape)
 print(X_test.shape, y_test.shape)
+
+model = train_model(X_train,y_train)
+
+""" print(X_test.isna().sum())
+print(y_test.isna().sum()) """
+
+print(model,model.coef_)
+evaluate_model(model,X_test,y_test)
+
+optimized_model = optimize_model(model,X_train,y_train)
+print('Optimized model')
+evaluate_model(optimized_model,X_test,y_test)
+
+save_model(optimized_model, './models/model.pkl')
+
+model_tryload = load_model('./models/model.pkl')
+print(model_tryload)
+
+print('Loaded model')
+evaluate_model(model_tryload)

@@ -14,7 +14,7 @@ def save_model(model, path: str):
         model: The model to save.
         path (str): The file path where the model will be saved.
     """
-    with open(os.path.join("models",path, "wb")) as f:
+    with open(path , "wb") as f:
         pickle.dump(model, f)
 
 def load_model(path: str):
@@ -27,6 +27,6 @@ def load_model(path: str):
     Returns:
         The loaded model.
     """
-    with open(path,"rb" ):
-        loaded_model = pickle.load(path)
+    with open(path,'rb' ) as f:
+        loaded_model = pickle.load(f)
     return loaded_model

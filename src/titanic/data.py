@@ -48,7 +48,7 @@ def clean_data(df):
     imputer.fit(df[['Age']])
     df[['Age']] = imputer.transform(df[['Age']])
     df["Embarked"] = df["Embarked"].fillna("S")
-
+    df = df.dropna(subset=['Fare'])
     return df
 
 def prepare_data(df:pd.DataFrame) -> tuple[pd.DataFrame, pd.Series]: 
