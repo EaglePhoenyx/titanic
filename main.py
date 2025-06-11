@@ -42,4 +42,4 @@ model_tryload = load_model('./models/model.pkl')
 print(model_tryload)
 
 print('Loaded model')
-evaluate_model(model_tryload)
+evaluate_model(model_tryload,X_test,y_test)
